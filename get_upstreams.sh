@@ -1,4 +1,11 @@
 #! /bin/bash
+if ! command -v terminus &> /dev/null
+then
+    echo "Terminus could not be found."
+    echo "Plase add terminus location to your PATH variable"
+    exit
+fi
+
 echo -e "\033[1;34mLogging into Pantheon...\033[0m"
 terminus auth:login 2>&1
 IFS=$'\n' read -r -d '' -a all_sites < <(terminus site:list --field name && printf '\0' )
