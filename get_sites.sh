@@ -41,7 +41,6 @@ printf "Please, choose an upstream: "
 read uid
 echo "You have chosen upstream ${upstreams[$uid]}"
 
-terminus auth:login 2>&1
 echo -e "\033[1;34mFetching Site List for error checking...\n\033[0m"
 IFS=$'\n' read -r -d '' -a my_sites < <(terminus site:list --field name --upstream "${upstreams[$uid]}" && printf '\0' )
 g=2
